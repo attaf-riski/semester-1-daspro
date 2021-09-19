@@ -22,6 +22,7 @@ def convers_degree(n,j):
         return (4/5) * n
     else:
         print("Mohon masukan kode derajat F,K,atau R. Inputan anda : "+j)
+        return 0.0
 
 # APLIKASI
 print(convers_degree(10.0,'K')) # Hasilnya adalah 283.0
