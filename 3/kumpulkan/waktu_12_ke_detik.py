@@ -33,5 +33,5 @@ def waktu_12_ke_detik(j,m,s,k) :
     
 
 # Aplikasi
-print(waktu_12_ke_detik(10,11,45,'am')) #Hasilnya yaitu 36705
+print(waktu_12_ke_detik(11,11,45,'am')) #Hasilnya yaitu 36705
 print(waktu_12_ke_detik(0,0,1,'pm')) #Hasilnya yaitu 43201
