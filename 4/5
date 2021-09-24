@@ -1,0 +1,13 @@
+# nama file
+# tanggal
+# nanti
+
+#from math import sqrt
+#from pangkat2 import fx2
+
+# DEFINISI DAN SPESIFIKASI DARI KONSTRUKTOR
+# MakePoint : 2 real --> point
+class Point:
+    def __init__(self,a,b):
+        self.x = a
+        self.y = b
