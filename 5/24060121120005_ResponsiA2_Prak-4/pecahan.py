@@ -1,3 +1,4 @@
+# بسم الله الرحمن الرحيم
 # Nama file : pecahan.py
 # Pembuat : Attaf Riski Putra Ramadhan
 # Tanggal : 26 September 2021
