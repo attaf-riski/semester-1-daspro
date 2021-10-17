@@ -5,7 +5,8 @@
 
 # DEFINISI TYPE
 # pecahan: <n:integer >= 0 ,d:integer > 0 >
-#   {<n,d> merupakan sebuah pecahan biasa, dengan n sebagai pembilang(numerator) dan d sebagai penyebut(denumerator), n bilangan bulat positif dan d bilangan natural.}
+#   {<n,d> merupakan sebuah pecahan biasa, dengan n sebagai pembilang(numerator) dan d sebagai
+#   penyebut(denumerator), n bilangan bulat positif dan d bilangan natural.}
 
 # pecahanc : <bil:integer , n:integer >= 0 ,d:integer > 0 >
 #   {<bil,n,d> adalah pecahan campuran, dengan bil sebagai bilangan, n sebagai pembilang(numerator) dan d sebagai penyebut(denumerator), bil merupakan bilangan bulat, n bilangan bulat positif dan d bilangan natural. }
@@ -57,17 +58,10 @@ def konversi_pecahan(P):
     else:
         return make_pecahan(bil(P) * peny_c(P) - pemb_c(P), peny_c(P))
 
-
-
 # konversi_real : pecahanc --> real
 #   {konversi_real(P) mengubah pecahan campuran P ke bilanagn desimal}
 def konversi_real(P):
-    if bil(P) >= 0:
-        return (bil(P)*peny_c(P)+pemb_c(P))/peny_c(P)
-    else :
-        return (bil(P)*peny_c(P)-pemb_c(P))/peny_c(P)
-
-
+    return pemb(konversi_pecahan(P)) / peny(konversi_pecahan(P))
 
 # add_p : pecahanc --> pecahanc
 #   {add_p(P1,P2) menjumlahkan pecahan campurang P1 dengan pecahan campuran P2}
@@ -78,10 +72,12 @@ def add_p(P1,P2):
 
 # sub_p : pecahanc --> pecahanc
 #   {sub_p(P1,P2) mengurangkan pecahan campuran P1 dengan pecahan camuran P2}
+# (2,4,5) dan (1,2,4)
 def sub_p(P1,P2):
     return make_pecahan_c(((pemb(konversi_pecahan(P1)) * peny(konversi_pecahan(P2))) - (pemb(konversi_pecahan(P2)) * peny(konversi_pecahan(P1)))) // (peny(konversi_pecahan(P2)) * peny(konversi_pecahan(P1))),((pemb(konversi_pecahan(P1)) * peny(konversi_pecahan(P2))) - (pemb(konversi_pecahan(P2)) * peny(konversi_pecahan(P1)))) % (peny(konversi_pecahan(P2)) * peny(konversi_pecahan(P1))), (peny(konversi_pecahan(P2)) * peny(konversi_pecahan(P1))))
 
-
+def sub():
+    return make_pecahan_c(-13//5,-13%5,5)
 
 # div_p : pecahanc --> pecahanc
 #   {div_p(P1,P2) membagi pecahan campuran P1 dengan pecahan campuran P2}
@@ -101,20 +97,20 @@ def mul_p(P1,P2):
 # is_eq_p : 2 pecahanc --> boolean
 #   {is_eq_p(P1,P2) membandingkan apakah P1 sama dengan P2}
 def is_eq_p(P1,P2):
-    return ((bil(P1)*peny_c(P1)+pemb_c(P1))/peny_c(P1)) == ((bil(P2)*peny_c(P2)+pemb_c(P2))/peny_c(P2))
+    return konversi_real(P1) == konversi_real(P2)
 
 
 # is_lt_p : 2 pecahanc --> boolean
 #    {is_lt_p(P1,P2) membandingkan apakah P1 lebih kecil dari P2}
 def is_lt_p(P1,P2):
-    return ((bil(P1)*peny_c(P1)+pemb_c(P1))/peny_c(P1)) < ((bil(P2)*peny_c(P2)+pemb_c(P2))/peny_c(P2))
+    return konversi_real(P1) < konversi_real(P2)
 
 
 
 # is_gt_p : 2 pecahanc --> boolean
 #   {is_gt_p(P1,P2) membandingkan apakah P1 lebih besar dari P2}
 def is_gt_p(P1,P2):
-    return ((bil(P1)*peny_c(P1)+pemb_c(P1))/peny_c(P1)) > ((bil(P2)*peny_c(P2)+pemb_c(P2))/peny_c(P2))
+    return konversi_real(P1) > konversi_real(P2)
 
 # APLIKASI
 
@@ -122,9 +118,9 @@ print("\n===SELAMAT DATANG DI PROGRAM TYPE BENTUKAN PECAHAN CAMPURAN===\n")
 
 print("\n===SESI OPERATOR===\n")
 print("Konversi dari [1,2,4] ke pecahan biasa adalah {}/{}".format(pemb(konversi_pecahan(make_pecahan_c(1,2,4))),peny(konversi_pecahan(make_pecahan_c(1,2,4)))))
-print("Konversi dari [1,2,4] ke bilangan adalah {}".format(konversi_real(make_pecahan_c(-1,2,4))))
+print("Konversi dari [1,2,4] ke bilangan desimal adalah {}".format(konversi_real(make_pecahan_c(-1,2,4))))
 print("Penjumlahan pecahan campuran (1 2/4) dengan pecahan campuran (2 4/5) adalah   ({} {}/{})".format(bil(add_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5))),pemb_c(add_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5))),peny_c(add_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5)))))
-print("Pengurangan pecahan campuran (1 2/4) dengan pecahan campuran (2 4/5) adalah   ({} {}/{})".format(bil(sub_p(make_pecahan_c(2,4,5),make_pecahan_c(1,2,4))),pemb_c(sub_p(make_pecahan_c(2,4,5),make_pecahan_c(1,2,4))),peny_c(sub_p(make_pecahan_c(2,4,5),make_pecahan_c(1,2,4)))))
+print("Pengurangan pecahan campuran (2 4/5) dengan pecahan campuran (1 2/4) adalah   ({} {}/{})".format(bil(sub_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5))),pemb_c(sub_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5))),peny_c(sub_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5)))))
 print("Pembagian pecahan campuran (1 2/4) dengan pecahan campuran (2 4/5) adalah   ({} {}/{})".format(bil(div_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5))),pemb_c(div_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5))),peny_c(div_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5)))))
 print("Perkalian pecahan campuran (1 2/4) dengan pecahan campuran (2 4/5) adalah   ({} {}/{})".format(bil(mul_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5))),pemb_c(mul_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5))),peny_c(mul_p(make_pecahan_c(1,2,4),make_pecahan_c(2,4,5)))))
 
