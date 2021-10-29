@@ -1,5 +1,5 @@
 # Nama File : 10.aritmatic_v2.py
-# Deskripsi : Mencari jumlah total nilai pada deret aritmatika tingkat 2 sampai suku tertentu
+# Deskripsi : Mencari jumlah total nilai pada deret aritmatika tingkat 3 sampai suku tertentu
 # Pembuat : Attaf Riski Putra Ramadhan
 # Tanggal 24 Oktober 2021
 
