@@ -1,0 +1,27 @@
+# konsi(mu([1,2],[3]),4)
+# konsi(konsi(mu([1,2],[]),3),4)
+# konsi(konsi(konsi([1,2],[]),3),4)
+# konsi(konsi([1,2],3),4)
+# konsi([1,2,3],4)
+# [1,2,3,4]
+
+#1|2,3
+            #konsi(mu([1],[2]),3)
+            #konsi(konsi(mu(H1,[]),2),3)
+            #konsi(konsi([1],2),3)
+            #konsi([1,2],3)
+            #[1,2,3]
+
+def make_union(H1,H2):
+    if is_empty(H1) and is_empty(H2):
+        return []
+    elif is_empty(H1) and not is_empty(H2):
+        return H2
+    elif not is_empty(H1) and is_empty(H2):
+        return H1
+    else: #H1 and H2 not empty
+        if is_member(first_elmnt(H1),H2): #skip
+            return make_union(tail(H1),H2)
+        else:
+            return konso(first_elmnt(H1),make_union(tail(H1),H2))
+print(make_union(make_set([1,2,3,4,4]),make_set([3,4,4,5])))
