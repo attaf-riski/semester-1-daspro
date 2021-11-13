@@ -1,0 +1,14 @@
+# [1,2,[1,2],4,5]
+# skip
+# [2,[1,2],4,5]
+# konslo(2,rb(1,[[1,2],4,5]))
+# konslo(2,konslo(rb(1,[1,2]),rb(1,[4,5])))
+# skip
+# konslo(2,konslo(rb(1,[2]),rb(1,[4,5])))
+# konslo(2,konslo([2],rb(1,[4,5])))
+# konslo(2,konslo([2],konslo(4,rb(1,[5]))))
+# konslo(2,konslo([2],konslo(4,[5])))
+# started !
+# konslo(2,konslo([2],[4,5]))
+# konslo(2,[[2],4,5])
+#[2,[2],4,5]
